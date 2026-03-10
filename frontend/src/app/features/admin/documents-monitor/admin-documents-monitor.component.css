@@ -1,0 +1,207 @@
+.page{
+max-width:1000px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.05);
+overflow:hidden;
+margin-top:20px;
+}
+
+/* TABLE */
+
+table{
+border-collapse:collapse;
+width:auto;
+}
+
+th{
+background:#f9fafb;
+padding:12px;
+font-size:13px;
+text-align:left;
+}
+
+td{
+padding:12px;
+font-size:14px;
+white-space:nowrap;
+}
+
+tbody tr:not(:last-child){
+border-bottom:1px solid #eee;
+}
+
+.doc-id{
+max-width:180px;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+/* BUTTONS */
+
+.actions{
+display:flex;
+gap:6px;
+}
+
+button{
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+}
+
+.view{
+background:#2563eb;
+}
+
+.delete{
+background:#dc2626;
+}
+
+.cancel{
+background:#6b7280;
+}
+
+/* MODAL */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.5);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.modal{
+background:white;
+width:420px;
+padding:25px;
+border-radius:10px;
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.close{
+background:none;
+border:none;
+font-size:18px;
+cursor:pointer;
+}
+
+.modal-body{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+}
+
+.hash span{
+max-width:200px;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.modal-footer{
+margin-top:20px;
+display:flex;
+justify-content:flex-end;
+gap:10px;
+}
+/* BADGES */
+
+.badge{
+padding:4px 10px;
+border-radius:12px;
+font-size:12px;
+font-weight:600;
+}
+
+.crypto{
+background:#dbeafe;
+color:#1d4ed8;
+}
+
+.secure{
+background:#dcfce7;
+color:#166534;
+}
+
+/* NOM DOCUMENT */
+
+.name{
+font-weight:500;
+}
+
+/* MODAL AUDIT */
+
+.audit-row{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:14px;
+}
+
+.audit-row label{
+font-weight:600;
+color:#374151;
+}
+
+/* HASH */
+
+.hash{
+max-width:220px;
+overflow:hidden;
+text-overflow:ellipsis;
+font-family:monospace;
+color:#111827;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.doc-id {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: monospace;
+}
+.name {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+td, th {
+  padding: 12px;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  background: #f9fafb;
+}
+.size {
+  width: 90px;
+}

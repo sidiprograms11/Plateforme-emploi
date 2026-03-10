@@ -1,0 +1,22 @@
+<h2>Offres disponibles</h2>
+
+<div *ngFor="let offer of offers" class="offer-card">
+  <h3>{{ offer.title }}</h3>
+  <p>{{ offer.description }}</p>
+
+  <button (click)="apply(offer.id)">Postuler</button>
+  <button (click)="loadApplications(offer.id)">Voir candidatures</button>
+</div>
+
+<hr>
+<div *ngIf="applications.length > 0" class="applications-container">
+  <h3>Candidatures</h3>
+
+  <div *ngFor="let app of applications">
+    <span>{{ app.userEmail }} - {{ app.status }}</span>
+    <div>
+      <button (click)="approve(app.id)">Approve</button>
+      <button (click)="reject(app.id)">Reject</button>
+    </div>
+  </div>
+</div>

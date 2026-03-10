@@ -1,0 +1,52 @@
+<div class="dashboard">
+
+  <h2>📊 Tableau de bord Admin</h2>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="stat-card">
+      <div class="stat-icon">💼</div>
+      <div>
+        <h3>{{offers}}</h3>
+        <p>Offres actives</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📄</div>
+      <div>
+        <h3>{{applications}}</h3>
+        <p>Candidatures</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🪪</div>
+      <div>
+        <h3>{{identities}}</h3>
+        <p>Identités en attente</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHART -->
+  <div class="chart-card">
+
+    <h3>Activité plateforme</h3>
+
+    <div class="chart-container">
+
+      <canvas
+        baseChart
+        [data]="chartData"
+        [options]="chartOptions"
+        chartType="bar">
+      </canvas>
+
+    </div>
+
+  </div>
+
+</div>

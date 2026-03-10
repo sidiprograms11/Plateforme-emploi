@@ -1,0 +1,57 @@
+<div class="access-container">
+
+  <!-- ===================== -->
+  <!-- AUTHORIZED USERS -->
+  <!-- ===================== -->
+
+  <h4>👥 Utilisateurs autorisés</h4>
+
+  <div *ngIf="loading" class="loader">
+    Chargement...
+  </div>
+
+ <div class="authorized-list" *ngIf="!loading">
+
+  <div class="user-chip"
+     *ngFor="let user of authorizedUsers">
+
+  {{ user.email }}
+
+  <span (click)="removeUser(user.id)">✖</span>
+</div>
+
+  <p *ngIf="authorizedUsers.length === 0" class="empty">
+    Aucun utilisateur supplémentaire.
+  </p>
+
+</div>
+
+  <!-- ===================== -->
+  <!-- ADD USER -->
+  <!-- ===================== -->
+
+  <h4>➕ Ajouter un utilisateur</h4>
+
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="onSearchChange()"
+    placeholder="Rechercher par email..."
+    class="search-input" />
+
+  <div *ngIf="loadingSearch" class="loader">
+    Recherche...
+  </div>
+
+  <div class="search-results" *ngIf="searchResults.length > 0">
+
+    <div class="search-item"
+         *ngFor="let user of searchResults"
+         (click)="addUser(user)">
+
+      {{ user.email }}
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,58 @@
+<div class="page">
+
+  <div class="header">
+    <h1>Candidatures</h1>
+    <p>Liste des candidatures pour cette offre</p>
+  </div>
+
+  <div class="card" *ngIf="applications.length > 0">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Utilisateur</th>
+          <th>Date</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let app of applications">
+
+          <td class="user">{{ app.userId }}</td>
+
+          <td class="date">
+            {{ app.appliedAt | date:'short' }}
+          </td>
+
+          <td>
+            <span class="status"
+                  [ngClass]="getStatusClass(app.status)">
+              {{ app.status }}
+            </span>
+          </td>
+
+          <td class="actions">
+            <button class="approve"
+                    (click)="approve(app.id)">
+              ✔
+            </button>
+
+            <button class="reject"
+                    (click)="reject(app.id)">
+              ✖
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="empty" *ngIf="applications.length === 0">
+    Aucune candidature.
+  </div>
+
+</div>

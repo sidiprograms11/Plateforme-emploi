@@ -1,0 +1,133 @@
+/* ================================================== */
+/* SECTION WRAPPER */
+/* ================================================== */
+
+.section {
+  padding: 48px;
+  background: linear-gradient(135deg, #020617, #020617);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e5e7eb;
+}
+
+/* ================================================== */
+/* TITLE */
+/* ================================================== */
+
+.section h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #93c5fd;
+}
+
+/* ================================================== */
+/* GRID */
+/* ================================================== */
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ================================================== */
+/* CARD */
+/* ================================================== */
+
+.document-card {
+  background:
+    radial-gradient(circle at top left, #1e3a8a, transparent 70%),
+    rgba(2, 6, 23, 0.92);
+
+  backdrop-filter: blur(18px);
+
+  border-radius: 20px;
+  padding: 24px;
+
+  border: 1px solid rgba(59, 130, 246, 0.15);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.25s ease;
+}
+
+/* Hover premium */
+.document-card:hover {
+  transform: translateY(-6px);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 0 30px 70px rgba(59, 130, 246, 0.35);
+}
+
+/* ================================================== */
+/* HEADER */
+/* ================================================== */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.type {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #c7d2fe;
+}
+
+/* ================================================== */
+/* BADGE */
+/* ================================================== */
+
+.badge.shared {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ================================================== */
+/* ACTIONS */
+/* ================================================== */
+
+.card-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: transparent;
+  color: #93c5fd;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25);
+}
+
+/* ================================================== */
+/* LOADER / ERROR */
+/* ================================================== */
+
+.loader {
+  margin-top: 40px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.error {
+  margin-top: 40px;
+  color: #f87171;
+  font-weight: 600;
+}

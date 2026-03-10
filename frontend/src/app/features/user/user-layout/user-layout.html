@@ -1,0 +1,46 @@
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" [class.closed]="!isSidebarOpen">
+
+    <div class="sidebar-header">
+      <h2>🔐 CryptoCoffre</h2>
+    </div>
+
+    <nav class="nav-links">
+
+      <a routerLink="/dashboard/coffre" routerLinkActive="active">
+        🔐 Mon coffre
+      </a>
+
+      <a routerLink="/dashboard/upload" routerLinkActive="active">
+        📤 Envoyer document
+      </a>
+
+      <a routerLink="/dashboard/offers" routerLinkActive="active">
+        💼 Offres
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="badge verified">✔ Identité vérifiée</span>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <button (click)="toggleSidebar()">☰</button>
+      <span>Espace Utilisateur</span>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+
+  </div>
+
+</div>

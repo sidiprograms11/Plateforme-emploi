@@ -1,0 +1,152 @@
+<div class="page">
+
+  <div class="header">
+    <h1>Gestion des identités</h1>
+    <p>Vérifiez et gérez les demandes utilisateurs</p>
+  </div>
+
+  <!-- TABLE -->
+  <div class="card" *ngIf="users.length > 0">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Statut</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let user of users">
+
+          <td class="email">
+            {{ user.email }}
+          </td>
+
+          <td>
+            <span class="status"
+              [ngClass]="getStatusClass(user.status)">
+              {{ user.status }}
+            </span>
+          </td>
+
+          <td class="actions">
+
+            <button class="view"
+              (click)="openModal(user)">
+              Voir
+            </button>
+
+ <button class="approve"
+(click)="approve(user.id)">
+Approuver
+</button>
+
+<button class="reject"
+(click)="reject(user.id)">
+Rejeter
+</button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+
+  <div class="empty" *ngIf="users.length === 0">
+    Aucune demande d'identité en attente.
+  </div>
+
+
+  <!-- MODAL -->
+
+  <div class="overlay" *ngIf="selectedUser">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <h2>Détails de l'identité</h2>
+          <p>{{ selectedUser.email }}</p>
+        </div>
+
+        <button class="close"
+          (click)="closeModal()">
+          ✕
+        </button>
+
+      </div>
+
+
+      <div class="modal-content">
+
+        <!-- LEFT -->
+        <div class="left">
+
+          <div class="status-block">
+
+            <span class="status large"
+              [ngClass]="getStatusClass(selectedUser.status)">
+              {{ selectedUser.status }}
+            </span>
+
+          </div>
+
+          <div class="modal-actions">
+
+            <button class="approve"
+              (click)="approve(selectedUser.id)">
+              Approuver
+            </button>
+
+            <button class="reject"
+              (click)="reject(selectedUser.id)">
+              Rejeter
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+        <div class="right">
+
+          <div class="image-block">
+
+            <h4>Pièce d'identité</h4>
+
+            <img
+              [src]="'data:image/*;base64,' + selectedUser.identityDocumentBase64">
+
+          </div>
+
+
+          <div class="image-block">
+
+            <h4>Selfie</h4>
+
+            <img
+              [src]="'data:image/*;base64,' + selectedUser.identityPhotoBase64">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

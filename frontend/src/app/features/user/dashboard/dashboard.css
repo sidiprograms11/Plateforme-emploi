@@ -1,0 +1,71 @@
+.dashboard {
+  padding: 40px 60px;
+}
+
+.dashboard h1 {
+  font-size: 6rem;       /* 🔥 énorme */
+  margin-bottom: 60px;
+  font-weight: 800;
+}
+
+/* ========================= */
+/* PROFILE CARD */
+/* ========================= */
+
+.profile-card {
+  background: white;
+  padding: 60px;          /* 🔥 beaucoup plus grand */
+  border-radius: 25px;
+  margin-bottom: 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  font-size: 2rem;        /* 🔥 texte plus grand */
+}
+
+/* ========================= */
+/* STATS CONTAINER */
+/* ========================= */
+
+.stats {
+  display: flex;
+  gap: 51px;              /* 🔥 plus d’espace */
+}
+
+/* ========================= */
+/* STAT CARD */
+/* ========================= */
+
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 60px;          /* 🔥 énorme */
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  font-size: 3rem;        /* 🔥 grand */
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.stat-card p {
+  font-size: 4.5rem;      /* 🔥 très visible */
+  font-weight: 800;
+}
+
+/* ========================= */
+/* STATUS COLORS */
+/* ========================= */
+
+.verified {
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.pending {
+  color: #f59e0b;
+  font-weight: 800;
+  font-size: 2rem;
+}

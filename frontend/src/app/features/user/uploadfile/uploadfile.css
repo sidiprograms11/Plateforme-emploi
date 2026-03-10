@@ -1,0 +1,225 @@
+/* ===== WRAPPER ===== */
+
+.upload-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 60px 80px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ===== GROS BLOC PRINCIPAL ===== */
+
+.upload-card {
+  width: 100%;
+  min-height: 75vh; /* 🔥 LONGUEUR IMPORTANTE */
+  background: #0f1c3f;
+  border-radius: 35px;
+  padding: 100px 120px; /* 🔥 GROS PADDING */
+  box-shadow: 0 50px 120px rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+   gap: 40px;
+  justify-content: flex-start;
+}
+
+/* ===== TITRE MASSIF ===== */
+
+.upload-card h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 110px;
+  letter-spacing: 1px;
+}
+
+/* ===== FORM GROUP ===== */
+
+.form-group {
+  margin-bottom: 90px; /* 🔥 GRAND ESPACEMENT */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== LABELS ===== */
+
+.form-group label {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+/* ===== INPUTS GÉANTS ===== */
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 30px 35px;
+  border-radius: 25px;
+  border: 3px solid #2d4eff;
+  background: #0c1736;
+  color: white;
+  font-size: 26px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.form-group input::placeholder {
+  font-size: 22px;
+  opacity: 0.6;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #5c8dff;
+  box-shadow: 0 0 0 8px rgba(92, 141, 255, 0.3);
+}
+
+/* ===== SELECT ===== */
+
+.form-group select {
+  font-size: 28px;
+  font-weight: 900;
+  cursor: pointer;
+  appearance: none;
+}
+.file-section {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+/* ===== FILE BUTTON MASSIF ===== */
+
+.file-button {
+  padding: 28px 60px;
+  font-size: 26px;
+  font-weight: 900;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #3b6fff, #5c8dff);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.file-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(92, 141, 255, 0.6);
+}
+
+.file-name {
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+/* ===== SEARCH ===== */
+
+.search-input {
+  padding: 30px 35px;
+  font-size: 26px;
+  border-radius: 25px;
+}
+
+/* ===== SEARCH RESULTS ===== */
+
+.search-results {
+  margin-top: 20px;
+  background: #15265c;
+  border-radius: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-item {
+  padding: 22px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-item:hover {
+  background: #2d4eff;
+}
+
+/* ===== USERS SELECTED ===== */
+
+.selected-users {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.user-chip {
+  background: #2d4eff;
+  padding: 16px 25px;
+  border-radius: 35px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ===== UPLOAD BUTTON ULTRA MASSIF ===== */
+
+.upload-button {
+  margin-top: 12px;
+  padding: 40px;
+  font-size: 32px;
+  font-weight: 900;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #2d4eff, #5c8dff);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 80px rgba(92, 141, 255, 0.6);
+}
+
+.upload-button:disabled {
+  opacity: 0.4;
+}
+
+/* ===== MESSAGE ===== */
+
+.message {
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.message.success {
+  color: #2ecc71;
+}
+
+.message.error {
+  color: #ff4d4d;
+}
+/* 🔥 DÉTACHER BOUTON FICHIER DU TYPE */
+
+.file-section {
+  margin-bottom: 80px; /* espace après le bouton fichier */
+}
+
+.file-button {
+  display: inline-block;
+  margin-bottom: 20px; /* espace sous le bouton */
+}
+
+.form-group:nth-of-type(2) {
+  margin-top: 30px; /* espace avant Type de document */
+}
+/* 🔥 DÉTACHER BOUTON FICHIER DU TYPE */
+
+.file-section {
+  margin-bottom: 80px; /* espace après le bouton fichier */
+}
+
+.file-button {
+  display: inline-block;
+  margin-bottom: 20px; /* espace sous le bouton */
+}
+
+.form-group:nth-of-type(2) {
+  margin-top: 30px; /* espace avant Type de document */
+}

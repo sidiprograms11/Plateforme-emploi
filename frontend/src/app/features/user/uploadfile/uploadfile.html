@@ -1,0 +1,110 @@
+<div class="upload-wrapper">
+
+  <div class="upload-card">
+
+    <h2>📤 Ajouter un document sécurisé</h2>
+    <div class="form-group">
+  <label>Nom du document</label>
+  <input
+    type="text"
+    [(ngModel)]="title"
+    placeholder="Ex: CV_orange"
+    required />
+</div>
+    <!-- FILE -->
+    <div class="file-section">
+      <label class="file-label">
+        <input type="file" (change)="onFileSelected($event)" hidden />
+        <span class="file-button">Choisir un fichier</span>
+      </label>
+
+      <div class="file-name" *ngIf="selectedFile">
+        {{ selectedFile.name }}
+      </div>
+    </div>
+
+    <!-- DOCUMENT TYPE -->
+  <div class="form-group">
+  <label>Type de document</label>
+
+  <select [(ngModel)]="documentType">
+
+    <!-- 📄 Documents candidature -->
+    <option value="CV">CV</option>
+    <option value="LETTRE_MOTIVATION">LETTRE_MOTIVATION</option>
+
+    <!-- 💰 Documents financiers -->
+    <option value="FICHE_PAIE">FICHE_PAIE</option>
+    <option value="FINANCIER">FINANCIER</option>
+    <option value="CONFIDENTIAL">CONFIDENTIAL</option>
+    <option value="ADMINISTRATIF">ADMINISTRATIF</option>
+    <option value="RELEVE_BANCAIRE">RELEVE_BANCAIRE</option>
+
+    <!-- 🆔 Documents utilisateur -->
+    <option value="PIECE_IDENTITE">PIECE_IDENTITE</option>
+    <option value="JUSTIFICATIF_DOMICILE">JUSTIFICATIF_DOMICILE</option>
+    <option value="DOCUMENT_PERSONNEL">DOCUMENT_PERSONNEL</option>
+
+    <!-- 📂 Documents généraux -->
+    <option value="CONTRAT">CONTRAT</option>
+    <option value="AUTRE">AUTRE</option>
+
+  </select>
+</div>
+
+    <!-- SHARE WITH USERS (EMAIL SEARCH) -->
+    <div class="form-group">
+
+      <label>Partager avec (email)</label>
+
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()"
+        placeholder="Rechercher par email..."
+        class="search-input" />
+
+      <!-- Loader -->
+      <div class="loading-users" *ngIf="loadingUsers">
+        Recherche...
+      </div>
+
+      <!-- Results -->
+      <div class="search-results" *ngIf="searchResults.length > 0">
+        <div
+          class="search-item"
+          *ngFor="let user of searchResults"
+          (click)="selectUser(user)">
+          {{ user.email }}
+        </div>
+      </div>
+
+      <!-- Selected users -->
+      <div class="selected-users" *ngIf="selectedUsers.length > 0">
+        <div class="user-chip" *ngFor="let user of selectedUsers">
+          {{ user.email }}
+          <span (click)="removeUser(user)">✖</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- UPLOAD BUTTON -->
+    <button 
+      class="upload-button"
+      [disabled]="!selectedFile"
+      (click)="upload()">
+      🔐 Uploader au coffre
+    </button>
+
+    <!-- MESSAGE -->
+    <div class="message"
+         [class.success]="message.includes('✅')"
+         [class.error]="message.includes('❌')"
+         *ngIf="message">
+      {{ message }}
+    </div>
+
+  </div>
+
+</div>

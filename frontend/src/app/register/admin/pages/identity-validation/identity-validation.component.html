@@ -1,0 +1,42 @@
+<h2>Demandes de vérification</h2>
+
+<!-- Loader -->
+<div *ngIf="loading">
+  Chargement...
+</div>
+
+<!-- Tableau des demandes -->
+<table *ngIf="!loading && identities.length > 0">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let identity of identities">
+      <td>{{ identity.email }}</td>
+      <td>{{ identity.status }}</td>
+      <td>
+        <button
+          type="button"
+          (click)="approve(identity.id)">
+          ✅ Valider
+        </button>
+
+        <button
+          type="button"
+          (click)="reject(identity.id)">
+          ❌ Refuser
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Aucun résultat -->
+<div *ngIf="!loading && identities.length === 0">
+  Aucune demande en attente 🎉
+</div>

@@ -1,0 +1,32 @@
+<div class="section">
+  <h3>📤 Documents partagés par moi</h3>
+
+  <div *ngIf="loading" class="loader">Chargement...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="documents-grid">
+
+    <div class="document-card" *ngFor="let doc of documents">
+
+      <div class="card-header">
+        <span class="type">{{ doc.documentType }}</span>
+        <span class="badge shared">
+          👥 {{ doc.authorizedCount }} accès
+        </span>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Titre :</strong> {{ doc.title }}</p>
+        <p>✍️ {{ doc.totalSignatures }} signature(s)</p>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-secondary">
+          Gérer accès
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

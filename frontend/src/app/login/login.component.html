@@ -1,0 +1,62 @@
+<div class="auth-bg">
+
+  <div class="auth-container">
+
+    <!-- Branding côté gauche -->
+    <div class="auth-brand">
+      <h1>🔐 CryptoCoffre</h1>
+      <p class="tagline">
+        Accédez à votre coffre numérique sécurisé.
+      </p>
+
+      <ul class="features">
+        <li>🔒 Chiffrement AES-256</li>
+        <li>🛡️ Signature RSA</li>
+        <li>📂 Coffre personnel sécurisé</li>
+      </ul>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="auth-form">
+
+      <h2>Connexion</h2>
+      <p class="subtitle">
+        Connectez-vous pour accéder à votre espace sécurisé.
+      </p>
+
+      <form (ngSubmit)="submit()">
+
+        <input
+          type="email"
+          placeholder="Adresse email"
+          [(ngModel)]="model.email"
+          name="email"
+          required />
+
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          [(ngModel)]="model.password"
+          name="password"
+          required />
+
+        <button type="submit">
+          Se connecter
+        </button>
+
+        <div class="error" *ngIf="error">
+          {{ error }}
+        </div>
+
+      </form>
+
+      <div class="register-link">
+        Pas encore inscrit ?
+        <a routerLink="/register">Créer un compte</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

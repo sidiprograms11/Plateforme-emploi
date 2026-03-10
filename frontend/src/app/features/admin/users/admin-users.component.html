@@ -1,0 +1,71 @@
+<div class="page">
+
+<h1>Gestion des utilisateurs</h1>
+
+<div class="toolbar">
+
+<input
+type="text"
+placeholder="Rechercher utilisateur..."
+[(ngModel)]="search"
+>
+
+<button (click)="searchUser()">
+Rechercher
+</button>
+
+</div>
+
+<div class="card">
+
+<table>
+
+<thead>
+<tr>
+<th>Email</th>
+<th>Role</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let u of users">
+<td>
+ <span class="role" [ngClass]="u.role">
+   {{u.role}}
+ </span>
+</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+<td>{{u.status}}</td>
+
+<td class="actions">
+
+<button class="promote"
+(click)="promote(u.id)">
+Admin
+</button>
+
+<button class="suspend"
+(click)="suspend(u.id)">
+Suspendre
+</button>
+
+<button class="delete"
+(click)="delete(u.id)">
+Supprimer
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>

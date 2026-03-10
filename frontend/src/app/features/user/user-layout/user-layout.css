@@ -1,0 +1,169 @@
+/* ===================================== */
+/* GLOBAL THEME XXL */
+/* ===================================== */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #020617;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e5e7eb;
+}
+
+/* ===================================== */
+/* SIDEBAR XXL */
+/* ===================================== */
+
+.sidebar {
+  width: 420px;              /* 🔥 énorme */
+  min-width: 420px;
+  max-width: 420px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #020617, #0f172a);
+  border-right: 2px solid rgba(59,130,246,0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 50px;
+}
+
+/* Header */
+
+.sidebar-header h2 {
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.sidebar-header::after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+  margin-top: 25px;
+}
+.sidebar-header h2 {
+  font-size: 3rem;          /* 🔥 déjà énorme comme tu voulais */
+  font-weight: 900;
+  color: #3b82f6;
+}
+
+/* NAV */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 40px;
+}
+
+.nav-links a {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 18px 25px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(59,130,246,0.15);
+  color: #3b82f6;
+  transform: translateX(8px);
+}
+
+/* FOOTER */
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 60px;
+}
+
+.badge.verified {
+  display: inline-block;
+  background: rgba(16,185,129,0.15);
+  color: #10b981;
+  padding: 18px 28px;
+  border-radius: 16px;
+  font-size: 1.5rem;         /* 🔥 grand */
+  font-weight: 700;
+}
+
+/* ===================================== */
+/* MAIN AREA XXL */
+/* ===================================== */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ===================================== */
+/* TOPBAR XXL */
+/* ===================================== */
+
+.topbar {
+  height: 140px;             /* 🔥 énorme */
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+  font-weight: 700;
+  font-size: 2.2rem;         /* 🔥 énorme */
+}
+
+.topbar button {
+  margin-right: 40px;
+  border: none;
+  background: rgba(59,130,246,0.2);
+  color: #3b82f6;
+  padding: 20px 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: 0.3s ease;
+}
+
+.topbar button:hover {
+  background: rgba(59,130,246,0.35);
+}
+
+/* ===================================== */
+/* CONTENT AREA XXL */
+/* ===================================== */
+
+.content {
+  flex: 1;
+  padding: 100px 120px;      /* 🔥 énorme */
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* ===================================== */
+/* SCROLLBAR */
+/* ===================================== */
+
+.content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(59,130,246,0.5);
+  border-radius: 8px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(59,130,246,0.7);
+}

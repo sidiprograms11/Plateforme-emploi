@@ -1,0 +1,130 @@
+/* Fond plein écran */
+.auth-bg {
+  min-height: 100vh;
+   padding: 40px;
+  background: linear-gradient(135deg, #020617, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #e5e7eb;
+}
+
+/* Conteneur central */
+.auth-container {
+  width: 100%;
+  max-width: 1300px;
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  background: radial-gradient(circle at top left, #1e3a8a, transparent 60%),
+              radial-gradient(circle at bottom right, #0ea5e9, transparent 55%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* Branding */
+.auth-brand {
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-brand h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #93c5fd;
+}
+
+.tagline {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  color: #c7d2fe;
+  max-width: 420px;
+}
+
+.features {
+  margin-top: 36px;
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.features li {
+  font-weight: 600; /* semi-bold, moderne */
+}
+
+/* Formulaire */
+.auth-form {
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(16px);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth-form button {
+  margin-top: 22px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.45);
+}
+
+.auth-form button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+.auth-form h2 {
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+/* Ton form s’intègre */
+.auth-form form {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-brand {
+    display: none;
+  }
+
+  .auth-form {
+    width: 100%;
+  }
+}

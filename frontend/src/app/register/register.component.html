@@ -1,0 +1,76 @@
+<div class="auth-bg">
+  <div class="auth-container">
+
+    <!-- Branding -->
+    <div class="auth-brand">
+      <h1>DocuMali</h1>
+      <p class="tagline">
+        Le coffre-fort numérique pour vos documents sensibles
+      </p>
+      <div class="bg-red-500 text-white p-10">
+  TEST
+</div>
+
+      <ul class="features">
+        <li>🔐 Chiffrement de bout en bout</li>
+        <li>📁 Stockage sécurisé</li>
+        <li>🛡️ Accès strictement contrôlé</li>
+      </ul>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="auth-form">
+      <h2>Créer un compte</h2>
+      <p class="subtitle">Accédez à votre espace sécurisé</p>
+
+      <form (ngSubmit)="submit()">
+
+        <input type="email"
+               [(ngModel)]="model.email"
+               name="email"
+               placeholder="Email"
+               required />
+
+        <input type="password"
+               [(ngModel)]="model.password"
+               name="password"
+               placeholder="Mot de passe"
+               required />
+
+        <input type="text"
+               [(ngModel)]="model.firstName"
+               name="firstName"
+               placeholder="Prénom"
+               required />
+
+        <input type="text"
+               [(ngModel)]="model.lastName"
+               name="lastName"
+               placeholder="Nom"
+               required />
+
+        <input type="date"
+               [(ngModel)]="model.birthDate"
+               name="birthDate"
+               required />
+
+        <label>Pièce d'identité</label>
+        <input type="file"
+               (change)="onIdentitySelected($event)"
+               required />
+
+        <label>Photo</label>
+        <input type="file"
+               (change)="onPhotoSelected($event)"
+               required />
+
+        <button type="submit" [disabled]="loading">
+          {{ loading ? 'Envoi...' : "S'inscrire" }}
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

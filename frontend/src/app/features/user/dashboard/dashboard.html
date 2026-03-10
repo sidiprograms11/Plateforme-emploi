@@ -1,0 +1,35 @@
+<div class="dashboard">
+
+  <h1>Bienvenue 👋</h1>
+
+  <div class="profile-card">
+    <h2>Mon profil</h2>
+    <p><strong>Email :</strong> {{ user?.email }}</p>
+    <p>
+      <strong>Statut :</strong>
+      <span [ngClass]="getStatusClass()">
+        {{ user?.status }}
+      </span>
+    </p>
+  </div>
+
+  <div class="stats">
+
+    <div class="stat-card">
+      <h3>📁 Documents</h3>
+      <p>{{ documentsCount }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>💼 Candidatures</h3>
+      <p>{{ applicationsCount }}</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>🔐 Signature</h3>
+      <p>Active</p>
+    </div>
+
+  </div>
+
+</div>

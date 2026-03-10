@@ -1,0 +1,310 @@
+<!-- ================================================== -->
+<!-- TITLE -->
+<!-- ================================================== -->
+
+<h2 class="page-title">🔐 Mon Coffre Sécurisé</h2>
+
+<!-- ================================================== -->
+<!-- TABS NAVIGATION -->
+<!-- ================================================== -->
+
+<div class="tabs">
+
+  <button 
+    [class.active]="activeTab === 'mine'"
+    (click)="setTab('mine')">
+    📂 Mes documents
+  </button>
+
+  <button 
+    [class.active]="activeTab === 'shared-with-me'"
+    (click)="setTab('shared-with-me')">
+    📥 Partagés avec moi
+  </button>
+
+  <button 
+  [class.active]="activeTab === 'shared-by-me'"
+  (click)="setTab('shared-by-me')">
+  📤 Partagés par moi
+</button>
+
+</div>
+
+<!-- ================================================== -->
+<!-- LOADING / ERROR -->
+<!-- ================================================== -->
+
+<div *ngIf="loading" class="loading">
+  Chargement des documents...
+</div>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>
+
+<!-- ================================================== -->
+<!-- SECTION : MES DOCUMENTS -->
+<!-- ================================================== -->
+
+<section *ngIf="activeTab === 'mine'" class="coffre-section">
+
+  <div class="documents-grid">
+
+    <div class="card" *ngFor="let doc of documents">
+
+  <!-- HEADER -->
+  <div class="header">
+
+    <!-- 🆕 Titre du document -->
+    <div class="title-wrapper">
+      <h3 class="doc-title">
+        {{ doc.title ||  'Document' }}
+      </h3>
+      <span class="type">{{ doc.documentType }}</span>
+    </div>
+
+   <span class="badge"
+      [class.signed]="doc.signedByCurrentUser"
+      [class.unsigned]="!doc.signedByCurrentUser">
+  {{ doc.signedByCurrentUser ? 'Signé' : 'Non signé' }}
+</span>
+
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+
+    <button class="primary"
+            (click)="preparePreview(doc)">
+      👁 Lire
+    </button>
+
+    <button class="secondary"
+            (click)="download(doc)">
+      ⬇ Télécharger
+    </button>
+
+    <button class="delete-btn"
+            (click)="deleteDocument(doc)">
+      🗑 Supprimer
+    </button>
+
+    <button class="manage-btn"
+            (click)="openManageAccess(doc)">
+      ⚙ Gérer accès
+    </button>
+    <button class="history-btn"
+        (click)="openHistory(doc)">
+  📜 Historique
+</button>
+
+  </div>
+
+</div>
+
+  </div>
+
+</section>
+
+<!-- ================================================== -->
+<!-- SECTION : PARTAGÉS AVEC MOI -->
+<!-- ================================================== -->
+
+<!-- SECTION : PARTAGÉS AVEC MOI -->
+<section *ngIf="activeTab === 'shared-with-me'" class="coffre-section">
+  <app-shared-with-me
+  (readDocumentEvent)="preparePreview($event)"
+  (historyEvent)="openHistory($event)">
+</app-shared-with-me>
+</section>
+
+<!-- SECTION : PARTAGÉS PAR MOI -->
+<section *ngIf="activeTab === 'shared-by-me'" class="coffre-section">
+  <app-shared-by-me></app-shared-by-me>
+</section>
+<!-- ================================================== -->
+<!-- PREVIEW FULLSCREEN -->
+<!-- ================================================== -->
+
+<div *ngIf="previewOpen" class="preview-overlay-full">
+
+  <div class="preview-modal">
+
+    <div class="preview-header">
+      <h3>🔐 Aperçu du document</h3>
+      <button class="close-btn" (click)="closePreview()">✖</button>
+    </div>
+
+    <div class="preview-body">
+
+      <!-- Password overlay -->
+      <div class="preview-lock" *ngIf="!unlocked">
+
+        <div class="unlock-box">
+          <h3>Confirmation requise</h3>
+
+          <input
+            type="password"
+            [(ngModel)]="previewPassword"
+            placeholder="Mot de passe" />
+
+          <div class="unlock-actions">
+            <button class="confirm-btn"
+                    (click)="confirmUnlock()">
+              Confirmer
+            </button>
+
+            <button class="cancel-btn"
+                    (click)="closePreview()">
+              Annuler
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PDF view -->
+      <div class="pdf-container" *ngIf="previewUrl">
+        <iframe
+          [src]="previewUrl"
+          class="pdf-frame">
+        </iframe>
+      </div>
+
+      <!-- Sign buttons -->
+      <button 
+        *ngIf="unlocked && selectedDoc?.signedByCurrentUser"
+        class="sign-floating-btn signed">
+        ✔ Déjà signé
+      </button>
+
+      <button 
+  *ngIf="unlocked && selectedDoc && !selectedDoc.signedByCurrentUser"
+  class="sign-floating-btn"
+  (click)="signDocument(selectedDoc)">
+  ✍️ Signer
+</button>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- ================================================== -->
+<!-- ACCESS MANAGER MODAL -->
+<!-- ================================================== -->
+
+<div *ngIf="manageOpen" class="manage-overlay">
+
+  <div class="manage-modal">
+
+    <div class="manage-header">
+      <h3>⚙ Gestion des accès</h3>
+      <button class="close-btn" (click)="closeManage()">✖</button>
+    </div>
+
+    <app-access-manager
+      *ngIf="manageDoc"
+      [documentId]="manageDoc.id">
+    </app-access-manager>
+
+  </div>
+
+</div>
+<!-- ================================================== -->
+<!-- HISTORY MODAL -->
+<!-- ================================================== -->
+
+<div *ngIf="historyOpen" class="history-overlay">
+
+  <div class="history-modal">
+
+    <div class="history-header">
+      <h3>📜 Historique du document</h3>
+      <button class="close-btn" (click)="closeHistory()">✖</button>
+    </div>
+
+    <div class="history-body">
+
+      <div *ngIf="historyLoading">Chargement...</div>
+
+     <div class="timeline">
+
+  <div *ngFor="let h of documentHistory" 
+       class="timeline-item">
+
+    <div class="timeline-dot"
+         [ngClass]="h.actionType.toLowerCase()">
+    </div>
+
+    <div class="timeline-content">
+
+      <!-- HEADER -->
+      <div class="timeline-header">
+
+        <span class="action-badge"
+              [ngClass]="h.actionType.toLowerCase()">
+          {{ h.actionType }}
+        </span>
+
+        <span class="timeline-date">
+          {{ h.timestamp | date:'dd/MM/yyyy HH:mm' }}
+        </span>
+
+      </div>
+
+      <!-- DOCUMENT -->
+      <div class="document-title">
+        📄 {{ h.documentTitle }}
+        <span class="doc-id">
+          ({{ h.documentId | slice:0:8 }}...)
+        </span>
+      </div>
+
+      <!-- OWNER -->
+      <div class="owner-line">
+        👑 Owner :
+        <span class="owner-email">
+          {{ h.ownerEmail }}
+        </span>
+      </div>
+
+      <!-- ACTOR -->
+      <div class="actor-line">
+        👤 Action par :
+        <span class="actor-email">
+          {{ h.actorEmail }}
+        </span>
+      </div>
+
+      <!-- SHARE -->
+      <div *ngIf="h.actionType === 'SHARE'" class="share-box">
+        🔐 Partagé avec :
+        <b>{{ h.targetUserEmail }}</b>
+      </div>
+
+      <!-- REMOVE SHARE -->
+      <div *ngIf="h.actionType === 'REMOVE_SHARE'" class="remove-box">
+        ❌ Accès retiré à :
+        <b>{{ h.targetUserEmail }}</b>
+      </div>
+
+      <!-- USERS COUNT -->
+      <div class="users-count">
+        👥 Accès total : 
+        <span>{{ h.totalAuthorizedUsers }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+    </div>
+
+  

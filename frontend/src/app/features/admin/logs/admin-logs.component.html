@@ -1,0 +1,41 @@
+<div class="page">
+
+<h1>Activité du système</h1>
+
+<div class="card">
+
+<table>
+
+<thead>
+<tr>
+<th>Action</th>
+<th>Utilisateur</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let log of logs">
+
+<td class="action">
+{{log.action}}
+</td>
+
+<td>
+{{log.userEmail}}
+</td>
+
+<td>
+{{log.timestamp | date:'short'}}
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>

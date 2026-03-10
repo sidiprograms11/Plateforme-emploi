@@ -1,0 +1,160 @@
+<div class="page">
+
+<h1>📄 Monitoring des Documents</h1>
+
+<div class="card">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Nom</th>
+<th>Propriétaire</th>
+<th>Taille</th>
+<th>Chiffrement</th>
+<th>Date</th>
+<th>Sécurité</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let d of documents">
+
+<td class="doc-id">
+{{ d.id }}
+</td>
+
+<td class="name">
+📄 {{ d.fileName }}
+</td>
+
+<td>
+👤 {{ d.ownerEmail }}
+</td>
+
+<td>
+{{ (d.fileSize / 1024).toFixed(1) }} KB
+</td>
+
+<td>
+<span class="badge crypto">
+{{ d.algorithm }}
+</span>
+</td>
+
+<td>
+{{ d.uploadedAt | date:'short' }}
+</td>
+
+<td>
+
+<span class="badge secure">
+✔ Hash vérifié
+</span>
+
+</td>
+
+<td class="actions">
+
+<button class="view"
+(click)="view(d)">
+Voir
+</button>
+
+<button class="delete"
+(click)="delete(d.id)">
+Supprimer
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- MODAL -->
+
+<<div class="overlay" *ngIf="selectedDocument">
+
+<div class="modal">
+
+<div class="modal-header">
+
+<h2>🔍 Audit du document</h2>
+
+<button class="close"
+(click)="closeModal()">
+✕
+</button>
+
+</div>
+
+<div class="modal-body">
+
+<div class="audit-row">
+<label>ID</label>
+<span>{{selectedDocument.id}}</span>
+</div>
+
+<div class="audit-row">
+<label>Nom</label>
+<span>{{selectedDocument.fileName}}</span>
+</div>
+
+<div class="audit-row">
+<label>Propriétaire</label>
+<span>{{selectedDocument.ownerEmail}}</span>
+</div>
+
+<div class="audit-row">
+<label>Taille</label>
+<span>{{selectedDocument.fileSize}} bytes</span>
+</div>
+
+<div class="audit-row">
+<label>Algorithme</label>
+<span class="badge crypto">
+{{selectedDocument.algorithm}}
+</span>
+</div>
+
+<div class="audit-row">
+<label>Date upload</label>
+<span>{{selectedDocument.uploadedAt | date:'medium'}}</span>
+</div>
+
+<div class="audit-row">
+<label>Hash cryptographique</label>
+
+<span class="hash">
+{{selectedDocument.hash}}
+</span>
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+<button class="cancel"
+(click)="closeModal()">
+Fermer
+</button>
+
+<button class="delete"
+(click)="delete(selectedDocument.id)">
+Supprimer document
+</button>
+
+</div>
+
+</div>
+
+</div>

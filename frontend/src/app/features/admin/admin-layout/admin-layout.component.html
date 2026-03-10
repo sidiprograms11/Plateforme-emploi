@@ -1,0 +1,69 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      🛠 CryptoCoffre Admin
+    </div>
+
+    <nav class="menu">
+
+      <a
+        routerLink="dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        📊 Dashboard
+      </a>
+
+      <a
+        routerLink="identity"
+        routerLinkActive="active">
+        👤 Identités
+      </a>
+      <a routerLink="monitoring" routerLinkActive="active">
+📄 Monitoring Documents
+</a>
+
+      <a
+        routerLink="users"
+        routerLinkActive="active">
+        👥 Utilisateurs
+      </a>
+
+      <a
+        routerLink="documents"
+        routerLinkActive="active">
+        📄 Documents
+      </a>
+
+      <a
+        routerLink="offers"
+        routerLinkActive="active">
+        💼 Offres
+      </a>
+
+      <a
+        routerLink="logs"
+        routerLinkActive="active">
+        📜 Logs système
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <header class="topbar">
+      <h1>Administration</h1>
+    </header>
+
+    <section class="page">
+      <router-outlet></router-outlet>
+    </section>
+
+  </main>
+
+</div>
